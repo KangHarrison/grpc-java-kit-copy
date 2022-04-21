@@ -69,6 +69,7 @@
         <google.gson.version>2.9.0</google.gson.version>
 
         <curator5.version>5.2.0</curator5.version>
+        <nacos.client.verison>2.0.2</nacos.client.verison>
     </properties>
 
     <build>
@@ -241,6 +242,12 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator5.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.client.verison}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

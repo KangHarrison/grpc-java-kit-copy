@@ -19,6 +19,7 @@ public interface UriUtil {
      * @param registryUri registry URI
      * @param appName     application name
      * @param appGroup    application group
+     * @return URI
      * @see cn.fantasticmao.grpckit.ServiceDiscovery
      * @see cn.fantasticmao.grpckit.ServiceDiscoveryProvider
      */
@@ -40,6 +41,7 @@ public interface UriUtil {
      * @param appGroup    application group
      * @param address     local host address
      * @param port        listening port
+     * @return URI
      * @see cn.fantasticmao.grpckit.ServiceRegistry
      * @see cn.fantasticmao.grpckit.ServiceRegistryProvider
      */

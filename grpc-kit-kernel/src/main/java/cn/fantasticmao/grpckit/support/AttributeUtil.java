@@ -20,6 +20,11 @@ public interface AttributeUtil {
 
     /**
      * Get the value of a specific key in the {@link Attributes} of a {@link EquivalentAddressGroup}.
+     *
+     * @param <T> type of value
+     * @param addressGroup addressGroup
+     * @param key key
+     * @return the value of key
      */
     @Nonnull
     static <T> T getAttribute(EquivalentAddressGroup addressGroup, Attributes.Key<T> key) {
@@ -41,6 +46,11 @@ public interface AttributeUtil {
 
     /**
      * Get the {@link ValRef} of a specific key in a {@link Attributes} of the {@link LoadBalancer.Subchannel}.
+     *
+     * @param <T> type of value
+     * @param subChannel subChannel
+     * @param key key
+     * @return the value of key
      */
     @Nonnull
     static <T> ValRef<T> getValRef(LoadBalancer.Subchannel subChannel, Attributes.Key<ValRef<T>> key) {

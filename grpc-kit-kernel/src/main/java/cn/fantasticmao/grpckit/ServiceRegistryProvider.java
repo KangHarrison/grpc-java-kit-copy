@@ -23,6 +23,7 @@ public abstract class ServiceRegistryProvider implements Comparable<ServiceRegis
      * </ul>
      *
      * @param serviceUri the service URI to be resolved.
+     * @return ServiceRegistry
      */
     @Nullable
     public abstract ServiceRegistry newServiceRegistry(URI serviceUri);

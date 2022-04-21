@@ -62,8 +62,7 @@ public abstract class ServiceLoadBalancer extends LoadBalancer {
 
         /**
          * The round-robin balancing policy.
-         *
-         * @see io.grpc.util.SecretRoundRobinLoadBalancerProvider$Provider
+         * @see cn.fantasticmao.grpckit.loadbalancer.picker.WeightRobinPicker
          */
         ROUND_ROBIN("round_robin"),
 
