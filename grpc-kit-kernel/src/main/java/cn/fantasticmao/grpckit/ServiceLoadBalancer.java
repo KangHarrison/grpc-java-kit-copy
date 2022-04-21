@@ -9,8 +9,8 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
- * Service load balancer, implemented by using gRPC {@link io.grpc.LoadBalancer}
- * and {@link io.grpc.LoadBalancerProvider} plugins.
+ * Service load balancer, implemented by using gRPC {@link io.grpc.LoadBalancer LoadBalancer}
+ * and {@link io.grpc.LoadBalancerProvider LoadBalancerProvider} plugins.
  *
  * @author fantasticmao
  * @version 1.39.0
@@ -61,8 +61,8 @@ public abstract class ServiceLoadBalancer extends LoadBalancer {
         PICK_FIRST("pick_first"),
 
         /**
-         * The round-robin balancing policy.
-         * @see cn.fantasticmao.grpckit.loadbalancer.picker.WeightRobinPicker
+         * The round-robin balancing policy, see
+         * {@code io.grpc.util.SecretRoundRobinLoadBalancerProvider$Provider}.
          */
         ROUND_ROBIN("round_robin"),
 

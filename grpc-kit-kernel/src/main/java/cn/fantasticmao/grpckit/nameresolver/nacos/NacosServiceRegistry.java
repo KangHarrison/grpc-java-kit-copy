@@ -1,9 +1,9 @@
 package cn.fantasticmao.grpckit.nameresolver.nacos;
 
-import cn.fantasticmao.grpckit.Constant;
 import cn.fantasticmao.grpckit.GrpcKitException;
 import cn.fantasticmao.grpckit.ServiceMetadata;
 import cn.fantasticmao.grpckit.ServiceRegistry;
+import cn.fantasticmao.grpckit.support.GsonUtil;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
@@ -48,7 +48,7 @@ public class NacosServiceRegistry extends ServiceRegistry {
             naming.registerInstance(metadata.getAppName(), instance);
             return true;
         } catch (NacosException e) {
-            String errorMsg = String.format("nacos registry instance error, metadata = %s", Constant.GSON.toJson(metadata));
+            String errorMsg = String.format("nacos registry instance error, metadata = %s", GsonUtil.GSON.toJson(metadata));
             throw new GrpcKitException(errorMsg, e);
         }
     }
