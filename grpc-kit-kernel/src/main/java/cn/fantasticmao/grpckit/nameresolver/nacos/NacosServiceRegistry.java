@@ -37,7 +37,7 @@ public class NacosServiceRegistry extends ServiceRegistry {
     @Override
     public boolean doRegister(ServiceMetadata metadata) {
         try {
-            NamingService naming = NamingServiceHolder.get(serverAddress, defaultNamespace);
+            NamingService naming = NamingServiceFactory.get(serverAddress, defaultNamespace);
             Instance instance = new Instance();
             instance.setServiceName(metadata.getAppName());
             instance.setIp(metadata.getHost());

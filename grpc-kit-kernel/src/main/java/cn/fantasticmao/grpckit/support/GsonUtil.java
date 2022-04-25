@@ -1,13 +1,15 @@
 package cn.fantasticmao.grpckit.support;
 
-import com.alibaba.nacos.shaded.com.google.gson.Gson;
+import com.google.gson.Gson;
 
 /**
- * @author harrison
- * @since 2022/4/21
+ * An util class for {@link Gson Google GSON}.
+ *
+ * @author fantasticmao
+ * @version 1.39.0
+ * @since 2022-04-18
  */
 public interface GsonUtil {
 
     Gson GSON = new Gson();
-
 }

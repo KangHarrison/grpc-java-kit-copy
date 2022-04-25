@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.fantasticmao.grpc-kit</groupId>
-            <artifactId>grpc-kit-kernel</artifactId>
+            <artifactId>grpc-kit-boot</artifactId>
         </dependency>
 
         <dependency>
@@ -31,6 +31,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>

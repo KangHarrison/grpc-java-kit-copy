@@ -96,7 +96,7 @@ public class NacosServiceDiscovery extends ServiceDiscovery {
      */
     private void lookUp() {
         // build service metadata
-        NamingService namingService = NamingServiceHolder.get(serverAddress, defaultNamespace);
+        NamingService namingService = NamingServiceFactory.get(serverAddress, defaultNamespace);
         List<Instance> instances;
         try {
             instances = namingService.getAllInstances(appName);

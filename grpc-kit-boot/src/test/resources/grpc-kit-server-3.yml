@@ -1,0 +1,7 @@
+grpc:
+  server:
+    port: 50053
+
+nameResolver:
+  registry: "nacos://localhost:8848"
+

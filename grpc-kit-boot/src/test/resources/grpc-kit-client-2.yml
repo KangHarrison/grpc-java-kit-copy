@@ -1,0 +1,10 @@
+grpc:
+  client:
+#    tag: "debug"
+    timeout: 5_000
+
+nameResolver:
+  registry: "nacos://localhost:8848"
+
+loadBalancer:
+  policy: "round_robin"

@@ -1,0 +1,7 @@
+grpc:
+  server:
+    port: 50054
+#    tag: "debug"
+
+nameResolver:
+  registry: "nacos://localhost:8848"

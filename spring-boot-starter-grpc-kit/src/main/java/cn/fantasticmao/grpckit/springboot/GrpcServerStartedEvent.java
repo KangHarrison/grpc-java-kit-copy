@@ -2,11 +2,12 @@ package cn.fantasticmao.grpckit.springboot;
 
 import org.springframework.context.ApplicationEvent;
 
+import java.util.Collections;
 import java.util.Set;
 
 /**
  * Event published by a {@link GrpcServerStartApplicationListener} when gRPC
- * {@link cn.fantasticmao.grpckit.GrpcKitConfig.Grpc.Server Server} has been started.
+ * {@link io.grpc.Server Server} has been started.
  *
  * @author fantasticmao
  * @version 1.39.0
@@ -17,7 +18,10 @@ public class GrpcServerStartedEvent extends ApplicationEvent {
 
     public GrpcServerStartedEvent(Object source, Set<String> serviceNames) {
         super(source);
-        this.serviceNames = serviceNames;
+        this.serviceNames = Collections.unmodifiableSet(serviceNames);
     }
 
+    public Set<String> getServiceNames() {
+        return serviceNames;
+    }
 }

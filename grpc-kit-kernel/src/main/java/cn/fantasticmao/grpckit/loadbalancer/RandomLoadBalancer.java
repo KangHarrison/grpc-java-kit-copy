@@ -2,7 +2,6 @@ package cn.fantasticmao.grpckit.loadbalancer;
 
 import cn.fantasticmao.grpckit.ServiceLoadBalancer;
 import cn.fantasticmao.grpckit.loadbalancer.picker.EmptyPicker;
-import cn.fantasticmao.grpckit.loadbalancer.picker.WeightRobinPicker;
 import cn.fantasticmao.grpckit.loadbalancer.picker.WeightedRandomPicker;
 import cn.fantasticmao.grpckit.support.AttributeUtil;
 import cn.fantasticmao.grpckit.support.ValRef;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 import static io.grpc.ConnectivityState.*;
 
 /**
- * The random service load balancer.
+ * Service load balancer for the {@link ServiceLoadBalancer.Policy#WEIGHTED_RANDOM weighted random} policy.
  *
  * @author fantasticmao
  * @version 1.39.0
@@ -157,9 +156,7 @@ class RandomLoadBalancer extends ServiceLoadBalancer {
 
         // update balancing state.
         if (!readySubChannelList.isEmpty()) {
-            // 如果要换负载均衡策略，则可以将 WeightedRandomPicker 更换为 WeightRobinPicker
             updateBalancingState(READY, new WeightedRandomPicker(readySubChannelList));
-            //updateBalancingState(READY, new WeightRobinPicker(readySubChannelList));
         } else {
             updateBalancingState(isConnecting ? CONNECTING : TRANSIENT_FAILURE,
                 new EmptyPicker(aggStatus));
