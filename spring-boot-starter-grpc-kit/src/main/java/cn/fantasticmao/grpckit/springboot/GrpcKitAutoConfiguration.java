@@ -1,11 +1,11 @@
 package cn.fantasticmao.grpckit.springboot;
 
 import cn.fantasticmao.grpckit.boot.GrpcKitConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 
 /**
  * gRPC Kit Auto Configuration.
@@ -26,13 +26,12 @@ public class GrpcKitAutoConfiguration {
     @Bean(BEAN_NAME_GRPC_KIT_CONFIG)
     @ConditionalOnMissingBean
     public GrpcKitConfig grpcKitConfig() {
-        return GrpcKitConfig.loadAndParse(configPath).validate();
+        return GrpcKitConfig.loadAndParse(configPath);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    @DependsOn(BEAN_NAME_GRPC_KIT_CONFIG)
-    public GrpcStubBeanPostProcessor grpcStubBeanPostProcessor() {
-        return new GrpcStubBeanPostProcessor();
+    public GrpcStubBeanPostProcessor grpcStubBeanPostProcessor(@Autowired GrpcKitConfig config) {
+        return new GrpcStubBeanPostProcessor(config);
     }
 }

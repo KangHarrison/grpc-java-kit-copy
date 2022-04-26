@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -19,7 +18,6 @@ import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Objects;
 import java.util.ServiceLoader;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -42,12 +40,13 @@ public class GrpcKitServerBuilder extends AbstractServerImplBuilder<GrpcKitServe
         this.serverBuilder = ServerBuilder.forPort(config.getGrpc().getServer().getPort());
     }
 
-    public static GrpcKitServerBuilder forConfig(@Nullable String appName, @Nonnull GrpcKitConfig config) {
+    public static GrpcKitServerBuilder forConfig(String appName, @Nonnull GrpcKitConfig config) {
         if (appName == null || appName.isBlank()) {
             throw new IllegalArgumentException("application name must not be null or blank");
         }
-        if (!Pattern.compile("[\\w]+").matcher(appName).matches()) {
-            throw new IllegalArgumentException("application name must match the regular expression: [\\w]+");
+        if (!ApplicationMetadata.NAME_PATTERN.matcher(appName).matches()) {
+            throw new IllegalArgumentException("application name must match the pattern: "
+                + ApplicationMetadata.NAME_PATTERN.pattern());
         }
         return new GrpcKitServerBuilder(appName, config.validate());
     }
@@ -64,14 +63,14 @@ public class GrpcKitServerBuilder extends AbstractServerImplBuilder<GrpcKitServe
             // 重写start，在启动后将服务注册到注册中心
             @Override
             public Server start() throws IOException {
-                Server s = super.start();
-                GrpcKitServerBuilder.this.register();
-                return s;
+                Server _server = super.start();
+                GrpcKitServerBuilder.this.register(_server);
+                return _server;
             }
         };
     }
 
-    private void register() {
+    private void register(Server server) {
         final String serviceGroup = config.getGrpc().getGroup();
         final int serverPort = config.getGrpc().getServer().getPort();
         final int serverWeight = config.getGrpc().getServer().getWeight();
