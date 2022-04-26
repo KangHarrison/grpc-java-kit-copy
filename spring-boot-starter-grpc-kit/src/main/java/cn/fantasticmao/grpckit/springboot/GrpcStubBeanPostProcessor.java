@@ -81,7 +81,7 @@ public class GrpcStubBeanPostProcessor implements BeanPostProcessor, Ordered {
                     return;
                 }
                 if (Modifier.isStatic(field.getModifiers())) {
-                    LOGGER.warn("@GrpcClient annotation is not supported on static fields: " + field);
+                    LOGGER.warn("@GrpcClient annotation is not supported on static fields: {}", field);
                     return;
                 }
                 if (!AbstractStub.class.isAssignableFrom(field.getType())) {
