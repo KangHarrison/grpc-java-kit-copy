@@ -1,6 +1,7 @@
 package cn.fantasticmao.grpckit.boot;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
  * @version 1.39.0
  * @since 2022-04-25
  */
+@Disabled
 public class ApplicationMetadataLoaderTest {
 
     @Test

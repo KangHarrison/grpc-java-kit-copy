@@ -5,6 +5,7 @@ import cn.fantasticmao.grpckit.proto.CalculatorServiceGrpc;
 import cn.fantasticmao.grpckit.springboot.annotation.GrpcClient;
 import io.grpc.stub.StreamObserver;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,6 +19,7 @@ import java.util.concurrent.Future;
  * @version 1.39.0
  * @since 2022-04-04
  */
+@Disabled
 @SpringBootTest(classes = ApplicationConfiguration.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class CalculatorTest {
     @GrpcClient
